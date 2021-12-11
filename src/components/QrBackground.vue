@@ -1,28 +1,27 @@
 <template>
-	<div class="custom-shadow m-5 rounded flex">
-		<div
-			v-if="variant === 'Square'"
-			:style="backgroundStyle"
-			class="rounded p-5 inline-block"
-			id="qrcode"
-		>
-			<slot />
-		</div>
-		<div
-			v-else-if="variant === 'Hexagon'"
-			:style="backgroundStyle"
-			class="hexagon shadow"
-			id="qrcode"
-		>
-			<slot />
-		</div>
-		<div
-			v-else-if="variant === 'Circle'"
-			:style="backgroundStyle"
-			class="circle p-10 shadow inline-block"
-			id="qrcode"
-		>
-			<slot />
+	<div class="m-5">
+		<div class="px-2 pb-2" id="qrcode">
+			<div
+				v-if="variant === 'Square'"
+				:style="backgroundStyle"
+				class="rounded custom-shadow p-5"
+			>
+				<slot />
+			</div>
+			<div
+				v-else-if="variant === 'Hexagon'"
+				:style="backgroundStyle"
+				class="hexagon custom-shadow"
+			>
+				<slot />
+			</div>
+			<div
+				v-else-if="variant === 'Circle'"
+				:style="backgroundStyle"
+				class="circle custom-shadow p-10"
+			>
+				<slot />
+			</div>
 		</div>
 	</div>
 </template>
@@ -62,7 +61,8 @@ export default {
 	border-radius: 100%;
 }
 .custom-shadow {
-	-webkit-box-shadow: 0px 5px 8px -1px #b0b0b0;
-	box-shadow: 0px 5px 8px -1px #b0b0b0;
+	-webkit-box-shadow: 0px 5px 8px -1px rgba(0,0,0,0.5);
+	box-shadow: 0px 5px 8px -1px rgba(0,0,0,0.5);
+	background-color: white;
 }
 </style>

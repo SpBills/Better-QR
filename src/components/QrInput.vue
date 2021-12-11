@@ -44,7 +44,7 @@ export default {
         const qrcodeValue = ref("");
         const radioValues = ["Square", "Circle"];
         const picked = ref("Square");
-        const colors = ref("#fff");
+        const colors = ref("#3872ba");
 
         watch(
             () => colors.value,

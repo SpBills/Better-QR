@@ -28,7 +28,7 @@ export default {
     setup() {
         const qrcodeValue = ref("");
         const variant = ref("Square");
-        const color = ref("white");
+        const color = ref("#3872ba");
         const generate = (val) => {
             qrcodeValue.value = val.qr;
             variant.value = val.variant;

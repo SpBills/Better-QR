@@ -5,18 +5,18 @@
 </template>
 
 <script>
-import html2canvas from "html2canvas";
+import { toPng } from 'html-to-image';
 
 export default {
     props: {
     },
     setup() {
         const save = async () => {
-            let canvas = await html2canvas(document.querySelector("#qrcode"), {
-                backgroundColor: null,
+            let dataUrl = await toPng(document.querySelector("#qrcode"), {
+                backgroundColor: null
             });
 
-            return canvas.toDataURL();
+            return dataUrl;
         };
 
         const download = async () => {
