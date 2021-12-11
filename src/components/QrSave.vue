@@ -8,6 +8,8 @@
 import html2canvas from "html2canvas";
 
 export default {
+    props: {
+    },
     setup() {
         const save = async () => {
             let canvas = await html2canvas(document.querySelector("#qrcode"), {
