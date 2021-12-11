@@ -29,7 +29,7 @@
         </div>
         <h3>Background Color</h3>
         <div class="shadow-xl w-1/3">
-            <color-picker pickerType="chrome" v-model:pureColor="colors" />
+            <color-picker disableHistory disableAlpha v-model:pureColor="colors" />
         </div>
     </div>
 </template>
