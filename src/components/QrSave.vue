@@ -1,5 +1,5 @@
 <template>
-    <button class="px-5 py-3 bg-blue-400 text-white rounded" @click="download">
+    <button class="px-5 py-3 inline-block bg-blue-400 text-white rounded" @click="download">
         SAVE
     </button>
 </template>
