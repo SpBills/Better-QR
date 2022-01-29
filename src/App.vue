@@ -1,8 +1,9 @@
 <template>
     <div class="h-screen flex justify-center items-center">
         <div class="shadow p-5 flex flex-col">
-            <h1 class="text-3xl font-extrabold">Pretty QRCode Generator</h1>
+            <h1 class="text-3xl font-extrabold">Better QRCode Generator</h1>
             <qr-code
+                :size="size"
                 :value="qrcodeValue"
                 :variant="variant"
                 :background="color"
@@ -29,8 +30,10 @@ export default {
         const qrcodeValue = ref("");
         const variant = ref("Square");
         const color = ref("#3872ba");
+        const size = ref(150);
         const generate = (val) => {
             qrcodeValue.value = val.qr;
+            size.value = val.size;
             variant.value = val.variant;
             color.value = val.colors;
         };
@@ -40,6 +43,7 @@ export default {
             qrcodeValue,
             variant,
             color,
+            size
         };
     },
     name: "App",

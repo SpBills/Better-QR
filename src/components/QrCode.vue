@@ -2,6 +2,7 @@
 	<div class="flex justify-center bg-transparent">
 		<qr-background :variant="variant" :background="background">
 			<qrcode-vue
+				:size="size"
 				:value="value"
 				:background="background"
 				:foreground="foreground"
@@ -38,6 +39,11 @@ export default {
 			required: false,
 			default: "#3872ba",
 		},
+		size: {
+			type: Number,
+			required: false,
+			default: 150
+		}
 	},
 	created() {
 		let backgroundHex = this.rgbToHex(this.background);

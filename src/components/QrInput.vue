@@ -1,9 +1,14 @@
 <template>
     <div>
-        <div class="flex">
+        <div class="flex flex-col">
+            <div class="mb-5">
+                <label>Size</label>
+                <vue-slider :color="colors" :min="10" :max="300" v-model="size" />
+            </div>
+            <div>
             <div>
                 <input
-                    placeholder="Put your data here."
+                    placeholder="Link Goes here"
                     v-model="qrcodeValue"
                     @input="generate()"
                     class="border-b-2 mr-3"
@@ -26,6 +31,7 @@
                     />
                 </div>
             </div>
+            </div>
         </div>
         <h3>Background Color</h3>
         <div class="shadow-xl w-1/3">
@@ -38,20 +44,28 @@
 import { ref } from "@vue/reactivity";
 import { watch } from "@vue/runtime-core";
 
+import VueSlider from 'vue-slider-component'
+import 'vue-slider-component/theme/antd.css'
+
 export default {
+    components: {
+        VueSlider,
+    },
     emits: ["generate"],
     setup(props, context) {
         const qrcodeValue = ref("");
         const radioValues = ["Square", "Circle"];
         const picked = ref("Square");
+        const size = ref(150);
         const colors = ref("#3872ba");
 
         watch(
-            () => colors.value,
-            (color, _prevColor) => {
+            () => [colors.value, size.value],
+            ([color, sz], [_prevColor, _prevSize]) => {
                 context.emit("generate", {
                     qr: qrcodeValue.value,
                     variant: picked.value,
+                    size: sz,
                     colors: color,
                 });
             }
@@ -61,6 +75,7 @@ export default {
             context.emit("generate", {
                 qr: qrcodeValue.value,
                 variant: picked.value,
+                size: size.value,
                 colors: colors.value,
             });
         };
@@ -69,6 +84,7 @@ export default {
             context.emit("generate", {
                 qr: qrcodeValue.value,
                 variant: evt.target.value,
+                size: size.value,
                 colors: colors.value,
             });
         };
@@ -80,6 +96,7 @@ export default {
             picked,
             colors,
             sendUpRadio,
+            size
         };
     },
 };
